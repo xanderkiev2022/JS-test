@@ -35,7 +35,8 @@ const atTheOldToad = {
     for (let potion of this.potions) {
     //  const potionIndex = this.potions.indexOf(potionName);
         const potionIndex = this.potions.indexOf(potion);
-          if(Object.values(potion).includes(potionName)){
+        //if(Object.values(potion).includes(potionName)){ //працює
+          if(potion.name === potionName){
         //if(potionIndex === -1)
             this.potions.splice(potionIndex, 1);
         }
