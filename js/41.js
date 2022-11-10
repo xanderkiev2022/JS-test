@@ -23,14 +23,14 @@ const atTheOldToad = {
 
   addPotion(newPotion, price) {
     //if (this.potions.includes(newPotion)) {
+    //1:52:00
+
     for (let potion of this.potions) {
       if (potion.name === newPotion.name) {
         return `Error! Potion ${newPotion} is already in your inventory!`;
       }
-      //    this.potions.push(newPotion);
-      this.potions.push({ name: newPotion, price: price });
-      return this.potions;
     }
+    this.potions.push({ name: newPotion, price: price });
   },
 
   //----------------------------------//
@@ -48,20 +48,31 @@ const atTheOldToad = {
     }
     return `Potion ${potionName} is not in inventory!`;
   },
+  //----------------------------------//
+  //----------------------------------//
+  //----------------------------------//
+  updatePotionName(oldName, newName) {
+    const { potions } = this; // зробили лок змінну, щоб не писати this.potions
+
+    for (let potion of potions) {
+      const potionIndex = potions.indexOf(potion);
+      const { name } = potion; // деструктурували, щоб не писати potion.name
+
+      if (name === oldName) {
+        console.log("Зілля є, воно в рядку", name);
+        potions.splice(potionIndex, 1, newName);
+      }
+    }
+    return `Potion ${oldName} is not in inventory!`;
+  },
 };
 
-// console.log(atTheOldToad.addPotion("Invisibility", 620));
-console.log(atTheOldToad.removePotion("Dragon breath"));
-console.log(atTheOldToad.getPotions());
+console.log(atTheOldToad.addPotion("Invisibility", 620));
+// console.log(atTheOldToad.removePotion("Dragon breath"));
+// console.log(atTheOldToad.getPotions());
+console.table(atTheOldToad.updatePotionName("Stone skin", "Stoooone skin"));
+console.table(atTheOldToad.getPotions());
 
 //-------
-//   updatePotionName(oldName, newName) {
-//     const potionIndex = this.potions.indexOf(oldName);
 
-//     if (potionIndex === -1) {
-//       return `Potion ${oldName} is not in inventory!`;
-//     }
-
-//     this.potions.splice(potionIndex, 1, newName);
-//   },
 // Change code above this line
