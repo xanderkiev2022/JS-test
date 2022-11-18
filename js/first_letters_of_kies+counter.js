@@ -11,29 +11,19 @@ const objValues = {
   sixth: "valueSixth",
 };
 
-console.log(counterFirstLetters(objValues));
-
-// {
-//   f: 3,
-//   t: 1,
-//   s: 2
-// }
-
 function counterFirstLetters(obj) {
   const FirstLettersObj = {};
 
   for (const key in obj) {
-    const firstLetter = key[0].toLowerCase();
-
-    // console.log(FirstLettersObj[firstLetter]);
-
-    if (FirstLettersObj.hasOwnProperty(firstLetter)) {
-      FirstLettersObj[firstLetter] += 1;
+    if (FirstLettersObj.hasOwnProperty(key[0].toLowerCase())) {
+      FirstLettersObj[key[0].toLowerCase()] += 1;
       continue;
     }
 
-    FirstLettersObj[firstLetter] = 1;
+    FirstLettersObj[key[0].toLowerCase()] = 1;
   }
 
   return FirstLettersObj;
 }
+
+console.log(counterFirstLetters(objValues));
